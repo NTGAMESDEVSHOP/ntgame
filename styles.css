@@ -1,9 +1,32 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  background-color: #f0f0f0;
 }
 
+.container {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1 {
+  color: #333;
+}
+
+button {
+  background-color: #7289DA;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #5f73ba;
+}
 .navbar {
   background-color: #7289DA;
   padding: 10px 0;
