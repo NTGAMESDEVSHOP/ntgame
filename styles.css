@@ -1,36 +1,14 @@
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f0f0f0;
 }
 
-.container {
-  width: 300px;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 100px;
-}
-
-h1 {
-  color: #333;
-}
-
-button {
-  background-color: #7289DA;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #5f73ba;
-}
 .navbar {
   background-color: #7289DA;
   padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ Navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul {
@@ -49,7 +27,7 @@ button:hover {
   color: #fff;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.3s ease; /* เพิ่มเอฟเฟค transition เมื่อเมาส์ hover บนลิงก์ */
+  transition: color 0.3s ease;
 }
 
 .navbar ul li a.active {
@@ -57,5 +35,19 @@ button:hover {
 }
 
 .navbar ul li a:hover {
-  color: #FFC83D; /* เปลี่ยนสีของลิงก์เมื่อ hover */
+  color: #FFC83D;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  color: #666;
 }
