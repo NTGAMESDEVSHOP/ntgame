@@ -1,2 +1,1 @@
 # ntgame
- ntgame
