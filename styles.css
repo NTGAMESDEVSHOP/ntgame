@@ -1,78 +1,58 @@
+
 body {
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
 }
 
 .navbar {
-  background-color: #7289DA;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #7289da;
+  color: white;
+  padding: 1em;
 }
 
 .navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
 }
 
 .navbar ul li {
   display: inline;
-  margin-right: 20px;
 }
 
 .navbar ul li a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s ease;
 }
 
 .navbar ul li a.active {
   font-weight: bold;
 }
 
-.navbar ul li a:hover {
-  color: #FFC83D;
-}
-
 .container {
-  width: 80%;
-  margin: 20px auto;
   text-align: center;
+  margin-top: 100px;
 }
 
 h1 {
   color: #333;
 }
 
-p {
-  color: #666;
-}
-button {
-    padding: 10px 20px;
-    background-color: #7289da;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+.btn {
+  padding: 10px 20px;
+  background-color: #7289da;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
-button:hover {
-    background-color: #5b6eae;
-}
-#login-status {
-    display: flex;
-    align-items: center;
-}
-
-#login-status img {
-    margin-right: 10px;
-}
-
-#login-status span {
-    font-size: 16px;
+.btn:hover {
+  background-color: #5b6dbe;
 }
