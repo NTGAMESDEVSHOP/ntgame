@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.getElementById("login-btn").addEventListener("click", function () {
+  console.log("Redirecting to Discord OAuth2...");
   window.location.href =
-    "https://discord.com/oauth2/authorize?client_id=1175760765513375785&permissions=_FJH508QCLFCnKXG69uWAk7ymVOaG7Iq&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.com%2Foauth2%2Fauthorize%3Fclient_id%3D1175760765513375785%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fntgamesdevsh&integration_type=0&scope=identify+bot+connections+email";
+    "https://discord.com/oauth2/authorize?client_id=1175760765513375785&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fntgamesdevsh&scope=identify+bot+connections+email";
 });
