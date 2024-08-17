@@ -64,3 +64,15 @@ button {
 button:hover {
     background-color: #5b6eae;
 }
+#login-status {
+    display: flex;
+    align-items: center;
+}
+
+#login-status img {
+    margin-right: 10px;
+}
+
+#login-status span {
+    font-size: 16px;
+}
