@@ -70,7 +70,4 @@ app.get('/', (req, res) => {
         res.send('<a href="https://discord.com/api/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&scope=identify">Login with Discord</a>');
     }
 });
-
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
 });
