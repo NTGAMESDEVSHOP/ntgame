@@ -51,3 +51,16 @@ h1 {
 p {
   color: #666;
 }
+button {
+    padding: 10px 20px;
+    background-color: #7289da;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5b6eae;
+}
