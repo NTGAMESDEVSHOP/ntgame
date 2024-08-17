@@ -1,19 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Check login status
-  var loggedIn = false; // Change this value based on login status
-  var loginStatusElement = document.getElementById("login-status");
+const express = require('express');
+const axios = require('axios');
+const app = express();
 
-  if (loggedIn) {
-    // If logged in, display Discord user info
-    loginStatusElement.innerHTML = "Logged in as: Your Discord Username";
-  } else {
-    // If not logged in, display login prompt
-    loginStatusElement.innerHTML = 'Please <a href="login.html">login</a>';
-  }
+const client_id = '1175760765513375785';
+const client_secret = '9c1CTuP2qbKp4SXRCxvWEniTDW_Iyzrg';
+const redirect_uri = 'https://ntgamesdevshop.github.io/ntgame/callback';
+
+app.get('/callback', async (req, res) => {
+    const code = req.query.code;
+
+    const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
+        client_id,
+        client_secret,
+        code,
+        grant_type: 'authorization_code',
+        redirect_uri,
+    }), {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    });
+
+    const accessToken = tokenResponse.data.access_token;
+
+    const userResponse = await axios.get('https://discord.com/api/users/@me', {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
+
+    res.send(userResponse.data);
 });
 
-document.getElementById("login-btn").addEventListener("click", function () {
-  console.log("Redirecting to Discord OAuth2...");
-  window.location.href =
-    "https://discord.com/oauth2/authorize?client_id=1175760765513375785&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fntgamesdevsh&scope=identify+bot+connections+email";
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
 });
