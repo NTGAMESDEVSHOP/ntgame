@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="styles.css">
+  <base href="/">
+  <link rel="stylesheet" type="text/css" href="output.css" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Shop</a></li>
-      <li><a href="#">Topup</a></li>
-      <li id="login-button"></li>
-    </ul>
-  </nav>
-
-  <div class="container">
-    <h1>Welcome to the Home Page</h1>
-    <p>This is where you can find all sorts of amazing content!</p>
-    <button id="login-btn" class="btn">Login with Discord</button>
-  </div>
-
-  <script src="script.js"></script>
+    <div class="flex items-center justify-center h-screen bg-discord-gray text-white" >
+        <a id="login" href="#discord_token_link" class="bg-discord-blue  text-xl px-5 py-3 rounded-md font-bold flex items-center space-x-4 hover:bg-gray-600 transition duration-75">
+            <i class="fa-brands fa-discord text-2xl"></i>
+            <span>Login with Discord</span>
+        </a>
+    </div>
 </body>
 </html>
