@@ -1,56 +1,33 @@
-const CLIENT_ID = '1175760765513375785';
-const REDIRECT_URI = 'https://ntgamesdevshop.github.io/ntgame/index.html'; // แก้ไข URI ให้เป็น URL ของหน้าเว็บคุณที่ต้องการให้เรียกกลับ
-const AUTH_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
-const RESPONSE_TYPE = 'token';
-const SCOPE = 'identify';
+const express = require('express');
+const axios = require('axios');
+const app = express();
 
-const loginBtn = document.getElementById('login-btn');
-const loginStatus = document.getElementById('login-status');
+const client_id = '1175760765513375785';
+const client_secret = '9c1CTuP2qbKp4SXRCxvWEniTDW_Iyzrg';
+const redirect_uri = 'https://ntgamesdevshop.github.io/ntgame/callback';
 
-function checkLoginStatus() {
-  const accessToken = localStorage.getItem('access_token');
-  if (accessToken) {
-    fetch('https://discord.com/api/users/@me', {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      loginStatus.innerHTML = `
-        <span>Welcome, ${data.username}#${data.discriminator}</span>
-        <button id="logout-btn" class="btn">Logout</button>
-      `;
-      loginBtn.style.display = 'none';
+app.use(express.static('public')); // Serve static files
 
-      document.getElementById('logout-btn').addEventListener('click', () => {
-        localStorage.removeItem('access_token');
-        loginStatus.innerHTML = '';
-        loginBtn.style.display = 'inline-block';
-      });
-    })
-    .catch(() => {
-      localStorage.removeItem('access_token');
-      loginStatus.innerHTML = '';
-      loginBtn.style.display = 'inline-block';
+app.get('/callback', async (req, res) => {
+    const code = req.query.code;
+
+    const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
+        client_id,
+        client_secret,
+        code,
+        grant_type: 'authorization_code',
+        redirect_uri,
+    }), {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
     });
-  }
-}
 
-loginBtn.addEventListener('click', () => {
-  window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+    const accessToken = tokenResponse.data.access_token;
+
+    const userResponse = await axios.get('https://discord.com/api/users/@me', {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
 });
-
-window.onload = () => {
-  const hash = window.location.hash;
-  if (hash) {
-    const params = new URLSearchParams(hash.substring(1));
-    const accessToken = params.get('access_token');
-    if (accessToken) {
-      localStorage.setItem('access_token', accessToken);
-      window.history.replaceState({}, document.title, "/");
-    }
-  }
-
-  checkLoginStatus();
-};
