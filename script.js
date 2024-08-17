@@ -1,5 +1,5 @@
-const CLIENT_ID = 'YOUR_DISCORD_CLIENT_ID';
-const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+const CLIENT_ID = '1175760765513375785';
+const REDIRECT_URI = 'https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=code&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame%2Findex.html&scope=identify';
 const AUTH_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
 const RESPONSE_TYPE = 'token';
 const SCOPE = 'identify';
