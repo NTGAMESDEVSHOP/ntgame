@@ -2,6 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const session = require('express-session');
 const app = express();
+ document.getElementById('logout-button').addEventListener('click', function() {
+            auth.signOut().then(() => {
+                window.location.href = 'login.html'; // Redirect to login page after sign out
+            }).catch((error) => {
+                console.error('Error signing out: ', error);
+            });
+        });
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXuTt8kwVlU7g7-q-jHmMlbS2j40joUdE",
