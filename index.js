@@ -15,7 +15,7 @@ app.get('/auth/discord', (request, response) => {
 });
 
 const port = '53134';
-app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`App listening at https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=code&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame%2Fdiscord_token_link&scope=identify`));
 
 window.onload = () => {
 const fragment = new URLSearchParams(window.location.hash.slice(1));
