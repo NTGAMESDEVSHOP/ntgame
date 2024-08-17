@@ -39,7 +39,7 @@ const fragment = new URLSearchParams(window.location.hash.slice(1));
 const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
 
 if (!accessToken) {
-    window.location.href('/')
+    window.location.href('https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=code&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame%2Fdashboard.html&scope=identify')
     return (document.getElementById('login').style.display = 'block');
 }
 
