@@ -3,14 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Login</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Discord Callback</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Discord Login</h1>
-    <button id="login-btn">Login with Discord</button>
-  </div>
-  <script src="script.js"></script>
+  <h2 id="login-status"></h2>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    if (code) {
+      fetch('https://discord.com/api/oauth2/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          'client_id': 'YOUR_CLIENT_ID',
+          'client_secret': 'YOUR_CLIENT_SECRET',
+          'grant_type': 'authorization_code',
+          'code': code,
+          'redirect_uri': 'YOUR_REDIRECT_URI',
+          'scope': 'identify email'
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const accessToken = data.access_token;
+
+        return fetch('https://discord.com/api/users/@me', {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
+      })
+      .then(response => response.json())
+      .then(userInfo => {
+        document.getElementById('login-status').innerText = `Logged in as: ${userInfo.username}`;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('login-status').innerText = 'Login failed.';
+      });
+    } else {
+      document.getElementById('login-status').innerText = 'Login failed. No code returned.';
+    }
+  </script>
 </body>
 </html>
