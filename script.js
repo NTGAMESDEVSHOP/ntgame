@@ -1,21 +1,56 @@
-const express = require('express');
-const axios = require('axios');
-const session = require('express-session');
-const app = express();
- document.getElementById('logout-button').addEventListener('click', function() {
-            auth.signOut().then(() => {
-                window.location.href = 'https://ntgamesdevshop.github.io/ntgame/login.html'; // Redirect to login page after sign out
-            }).catch((error) => {
-                console.error('Error signing out: ', error);
-            });
-        });
+const CLIENT_ID = 'YOUR_DISCORD_CLIENT_ID';
+const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+const AUTH_ENDPOINT = 'https://discord.com/api/oauth2/authorize';
+const RESPONSE_TYPE = 'token';
+const SCOPE = 'identify';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDXuTt8kwVlU7g7-q-jHmMlbS2j40joUdE",
-    authDomain: "ntdevweb.firebaseapp.com",
-    projectId: "ntdevweb",
-    storageBucket: "ntdevweb.appspot.com",
-    messagingSenderId: "271632846990",
-    appId: "1:271632846990:web:ea0484d4a0d4fc965c79df",
-    measurementId: "G-CWBFW7Z22B"
+const loginBtn = document.getElementById('login-btn');
+const loginStatus = document.getElementById('login-status');
+
+function checkLoginStatus() {
+  const accessToken = localStorage.getItem('access_token');
+  if (accessToken) {
+    fetch('https://discord.com/api/users/@me', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      loginStatus.innerHTML = `
+        <span>Welcome, ${data.username}#${data.discriminator}</span>
+        <button id="logout-btn" class="btn">Logout</button>
+      `;
+      loginBtn.style.display = 'none';
+
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        localStorage.removeItem('access_token');
+        loginStatus.innerHTML = '';
+        loginBtn.style.display = 'inline-block';
+      });
+    })
+    .catch(() => {
+      localStorage.removeItem('access_token');
+      loginStatus.innerHTML = '';
+      loginBtn.style.display = 'inline-block';
+    });
+  }
+}
+
+loginBtn.addEventListener('click', () => {
+  window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+});
+
+window.onload = () => {
+  const hash = window.location.hash;
+  if (hash) {
+    const params = new URLSearchParams(hash.substring(1));
+    const accessToken = params.get('access_token');
+    if (accessToken) {
+      localStorage.setItem('access_token', accessToken);
+      window.history.replaceState({}, document.title, "/");
+    }
+  }
+
+  checkLoginStatus();
 };
