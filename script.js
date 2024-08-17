@@ -4,7 +4,7 @@ const session = require('express-session');
 const app = express();
  document.getElementById('logout-button').addEventListener('click', function() {
             auth.signOut().then(() => {
-                window.location.href = 'login.html'; // Redirect to login page after sign out
+                window.location.href = 'https://ntgamesdevshop.github.io/ntgame/login.html'; // Redirect to login page after sign out
             }).catch((error) => {
                 console.error('Error signing out: ', error);
             });
