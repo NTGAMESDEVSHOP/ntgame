@@ -61,7 +61,7 @@
             .then(data => {
                 const { username, discriminator } = data;
                 document.getElementById('login').innerText = `${username}#${discriminator}`;
-                document.getElementById('login').href = "userinfo"; // Disable login link after login
+                document.getElementById('login').href = "#"; // Disable login link after login
             })
             .catch(console.error);
         };
