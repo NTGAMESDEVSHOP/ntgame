@@ -26,7 +26,7 @@ window.onload = () => {
 		const randomString = generateRandomString();
 		localStorage.setItem('oauth-state', randomString);
 
-		document.getElementById('login').href += `&state=${btoa(randomString)}`;
+		document.getElementById('login').href += `https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=code&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame&scope=identify`;
 		return (document.getElementById('login').style.display = 'block');
 	}
 };
