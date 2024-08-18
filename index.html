@@ -85,17 +85,12 @@
 
         function logoutUser() {
             Swal.fire({
-  title: "คุณได้ออกจากระบบสำเร็จแล้ว",
-  showDenyButton: true,
-  showCancelButton: true
-}).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-    Swal.fire("Saved!", "", "success");
-  } else if (result.isDenied) {
-    Swal.fire("Changes are not saved", "", "info");
-  }
-}); logout operations)
+  position: "top-end",
+  icon: "success",
+  title: "ดำเนินการออกจากระบบสำเร็จแล้ว",
+  showConfirmButton: false,
+  timer: 1500
+});
             window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; // Redirect to logout page
         }
     </script>
