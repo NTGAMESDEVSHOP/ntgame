@@ -76,13 +76,6 @@
                         if (result.isConfirmed) {
                             // Logic to log out the user
                             logoutUser();
-Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "ดำเนินการออกจากระบบสำเร็จแล้ว",
-  showConfirmButton: false,
-  timer: 1500
-});
                         }
                     });
                 });
@@ -90,6 +83,13 @@ Swal.fire({
             .catch(console.error);
         };
         function logoutUser() {
+Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "ดำเนินการออกจากระบบสำเร็จแล้ว",
+  showConfirmButton: false,
+  timer: 1500
+});
             window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; 
         }
     </script>
