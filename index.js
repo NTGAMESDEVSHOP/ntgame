@@ -7,4 +7,4 @@ app.get('/', (request, response) => {
 	return response.sendFile('index.html', { root: '.' });
 });
 
-app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`App listening at https://ntgamesdevshop.github.io/ntgame`));
