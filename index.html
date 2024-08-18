@@ -84,7 +84,14 @@
         };
 
         function logoutUser() {
-            window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; // Redirect to logout page
+            window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; 
+Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "ดำเนินการออกจากระบบสำเร็จแล้ว",
+  showConfirmButton: false,
+  timer: 1500
+});
         }
     </script>
 </body>
