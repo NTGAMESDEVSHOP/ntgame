@@ -13,17 +13,12 @@
             <li><a href="#home">หน้าแรก</a></li>
             <li><a href="#download">ดาวน์โหลด</a></li>
             <li><a href="#topup">เติมเงิน</a></li>
-            <li><a href="#login" id="menu-login">เข้าสู่ระบบ</a></li>
+            <li><a href="https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=token&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame&scope=identify" id="login">เข้าสู่ระบบ</a></li>
         </ul>
         <div class="logo">
             <img src="https://via.placeholder.com/150x40?text=LOGO" alt="NTDEV SHOP Logo">
         </div>
     </div>
-
-    <!-- Main Content -->
-    <div id="info">Hoi!</div>
-    <a id="login" style="display: none;" href="https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=token&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame&scope=identify">Identify Yourself</a>
-    
     <script>
         window.onload = () => {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
@@ -43,7 +38,7 @@
             .then(response => response.json())
             .then(data => {
                 const { username, discriminator } = data;
-                document.getElementById('info').innerText = `Hoi! ${username}#${discriminator}`;
+                document.getElementById('login').innerText = `${username}#${discriminator}`;
                 document.getElementById('menu-login').innerText = `${username}#${discriminator}`;
                 document.getElementById('menu-login').href = "#"; // Disable the login link after login
             })
