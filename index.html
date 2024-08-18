@@ -68,7 +68,7 @@
                         text: "หากออกจากระบบ คุณจะต้องเข้าสู่ระบบใหม่",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
+                        confirmButtonColor: '#ffffff',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'ออกจากระบบ',
                         cancelButtonText: 'ยกเลิก'
@@ -84,7 +84,18 @@
         };
 
         function logoutUser() {
-            // Clear access token (or other logout operations)
+            Swal.fire({
+  title: "คุณได้ออกจากระบบสำเร็จแล้ว",
+  showDenyButton: true,
+  showCancelButton: true
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    Swal.fire("Saved!", "", "success");
+  } else if (result.isDenied) {
+    Swal.fire("Changes are not saved", "", "info");
+  }
+}); logout operations)
             window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; // Redirect to logout page
         }
     </script>
