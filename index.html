@@ -1,13 +1,60 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/">
-  <link rel="stylesheet" type="text/css" href="styles.css" >
-    <title>NTDEV SHOP - HOME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>ร้าน NTDEV - หน้าแรก</title>
+    <style>
+        /* Reset margins and padding */
+        body, h1, h2, h3, h4, h5, h6, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .navbar ul li {
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar ul li a:hover {
+            color: #ddd;
+        }
+        .logo img {
+            height: 40px;
+        }
+        /* Main content */
+        #info {
+            padding: 20px;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <div class="navbar">
         <ul>
             <li><a href="#home">หน้าแรก</a></li>
@@ -16,9 +63,13 @@
             <li><a href="https://discord.com/oauth2/authorize?client_id=1175760765513375785&response_type=token&redirect_uri=https%3A%2F%2Fntgamesdevshop.github.io%2Fntgame&scope=identify" id="login">เข้าสู่ระบบ</a></li>
         </ul>
         <div class="logo">
-            <img src="https://via.placeholder.com/150x40?text=LOGO" alt="NTDEV SHOP Logo">
+            <img src="https://via.placeholder.com/150x40?text=LOGO" alt="โลโก้ร้าน NTDEV">
         </div>
     </div>
+
+    <!-- Main Content -->
+    <div id="info">Hoi!</div>
+    
     <script>
         window.onload = () => {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
@@ -39,8 +90,7 @@
             .then(data => {
                 const { username, discriminator } = data;
                 document.getElementById('login').innerText = `${username}#${discriminator}`;
-                document.getElementById('menu-login').innerText = `${username}#${discriminator}`;
-                document.getElementById('menu-login').href = "#"; // Disable the login link after login
+                document.getElementById('login').href = "#"; // Disable login link after login
             })
             .catch(console.error);
         };
