@@ -74,7 +74,6 @@
                         cancelButtonText: 'ยกเลิก'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            // Logic to log out the user
                             logoutUser();
                         }
                     });
@@ -89,8 +88,11 @@ Swal.fire({
   title: "ดำเนินการออกจากระบบสำเร็จแล้ว",
   showConfirmButton: false,
   timer: 1500
-});
-            window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; 
+}).then((result) => {
+       if (result.isConfirmed) {
+                               window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; 
+                        }
+                    });
         }
     </script>
 </body>
