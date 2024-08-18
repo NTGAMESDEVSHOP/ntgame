@@ -76,15 +76,6 @@
                         if (result.isConfirmed) {
                             // Logic to log out the user
                             logoutUser();
-                        }
-                    });
-                });
-            })
-            .catch(console.error);
-        };
-
-        function logoutUser() {
-            window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; 
 Swal.fire({
   position: "top-end",
   icon: "success",
@@ -92,6 +83,14 @@ Swal.fire({
   showConfirmButton: false,
   timer: 1500
 });
+                        }
+                    });
+                });
+            })
+            .catch(console.error);
+        };
+        function logoutUser() {
+            window.location.href = 'https://ntgamesdevshop.github.io/ntgame/'; 
         }
     </script>
 </body>
