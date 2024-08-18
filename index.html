@@ -59,7 +59,7 @@
                 const { username, discriminator } = data;
                 const loginLink = document.getElementById('login');
                 loginLink.innerText = `${username}#${discriminator}`;
-                loginLink.href = "#"; // Disable login link after login
+                loginLink.href = ""; // Disable login link after login
 
                 loginLink.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent the default link behavior
